@@ -120,13 +120,14 @@
         var isReset = function (posY) {
             return posY > canvas.height && Math.random() > options.randomFactor;
         };
-
+        
+        //text
         var drawBackground = function () {
             ctx.shadowColor = 'black';
             ctx.shadowOffsetX = 0;
             ctx.shadowOffsetY = 0;
             ctx.shadowBlur = 0;
-            ctx.fillStyle = "rgba(0, 0, 0)";
+            ctx.fillStyle = "rgba(0, 0, 0, " + options.alphaFading + ")";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         };
 
@@ -165,67 +166,6 @@
             drawText();
         };
 
-        this.start = function () {
-            new Intro(options)
-                .start()
-                .then(function () {
-                    pool.schedule(function () {
-                        initialize();
-                        that.play();
-                        $(canvas).css('cursor', 'pointer');
-                        $('.controls').show();
-                    });
-                });
-        };
-
-        this.pause = function () {
-            if (!interval) return;
-
-            console.log('pause');
-            clearInterval(interval);
-            interval = null;
-
-            $('.play-toggle')
-                .attr('title', 'Play [SPACE]')
-                .find('.fa')
-                .removeClass('fa-pause')
-                .addClass('fa-play');
-        };
-
-        this.play = function () {
-            if (interval) return;
-
-            console.log('play');
-            interval = setInterval(draw, options.intervalTime);
-
-            $('.play-toggle')
-                .attr('title', 'Pause [SPACE]')
-                .find('.fa')
-                .removeClass('fa-play')
-                .addClass('fa-pause');
-        };
-
-        this.toggle = function () {
-            if (interval) {
-                this.pause();
-            } else {
-                this.play();
-            }
-        };
-
-
-        $(window).on('resize', _.debounce(function () {
-            that.pause();
-
-            console.log('re-initialize after resize');
-            canvas.height = window.innerHeight;
-            canvas.width = window.innerWidth;
-            initialize();
-
-            that.play();
-        }, 300));
-
-    };
 
     var Intro = function (options) {
         var canvas = options.canvas;
@@ -269,7 +209,7 @@
     var matrix = new Matrix({
         canvas: canvas,
         fontSize: 14,
-        alphaFading: 0.04,
+        alphaFading: 0.00,
         randomFactor: 0.995,
         intervalTime: 120
     });

@@ -225,17 +225,7 @@
 
     };
 
-    var Intro = function (options) {
-        var canvas = options.canvas;
-        var ctx = canvas.getContext("2d");
-
-        var xMax = Math.floor(canvas.width / options.fontSize);
-        var yMax = Math.ceil(canvas.height / options.fontSize);
-
-        var draw = function () {
-            drawBackground();
-            drawNumbers();
-        };
+    
 
 
         this.start = function () {

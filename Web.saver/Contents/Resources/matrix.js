@@ -84,7 +84,7 @@
         this.draw = function (ctx, posX, posY, y) {
             if (y < commit.user.length + 1) {
                 ctx.shadowColor = '#000';
-                ctx.fillStyle = "#000";
+                ctx.fillStyle = "#FFF";
             } else {
                 ctx.fillStyle = "#4ccef4";
                 ctx.shadowColor = '#4ccef4';

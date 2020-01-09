@@ -82,9 +82,11 @@
         var text = '@' + commit.user + commit.code;
 
         this.draw = function (ctx, posX, posY, y) {
+            //trailing text behind colored
             if (y < commit.user.length + 1) {
-                ctx.shadowColor = '#000';
+                ctx.shadowColor = '#FFF';
                 ctx.fillStyle = "#FFF";
+            //colored text
             } else {
                 ctx.fillStyle = "#4ccef4";
                 ctx.shadowColor = '#4ccef4';
@@ -124,7 +126,7 @@
             ctx.shadowOffsetX = 0;
             ctx.shadowOffsetY = 0;
             ctx.shadowBlur = 0;
-            ctx.fillStyle = "rgba(0, 0, 0, " + options.alphaFading + ")";
+            ctx.fillStyle = "rgba(0, 0, 0)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         };
 

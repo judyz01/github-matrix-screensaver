@@ -83,11 +83,11 @@
 
         this.draw = function (ctx, posX, posY, y) {
             if (y < commit.user.length + 1) {
-                ctx.shadowColor = '#FFF';
-                ctx.fillStyle = "#FFF";
+                ctx.shadowColor = '#000';
+                ctx.fillStyle = "#000";
             } else {
-                ctx.fillStyle = "#0F0";
-                ctx.shadowColor = '#0F0';
+                ctx.fillStyle = "#4ccef4";
+                ctx.shadowColor = '#4ccef4';
             }
 
             var char = text[y] || '';
@@ -241,7 +241,7 @@
             ctx.shadowOffsetX = 0;
             ctx.shadowOffsetY = 0;
             ctx.shadowBlur = 0;
-            ctx.fillStyle = "rgba(0, 0, 0, 0.75)";
+            ctx.fillStyle = "rgba(0, 0, 0)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         };
 
